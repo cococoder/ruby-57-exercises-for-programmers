@@ -9,11 +9,10 @@ class CliTest < Test::Unit::TestCase
     runtime = mock!
 
     #expect
-    mock(runtime).puts("What is your name?")
-    mock(runtime).gets {"Brian"}
-    mock(runtime).puts("Hello, Brian, nice to meet you!")
+    mock(runtime).out("What is your name?")
+    mock(runtime).in { name }
+    mock(runtime).out ("Hello, Brian, nice to meet you!")
     @cli = SayHello::Cli.new runtime: runtime
-
     #when
     @cli.run
 
