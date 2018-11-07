@@ -23,7 +23,9 @@ module SayHello
       def initialize source
         @source = source
       end
-
+      def to_s
+        @source
+      end
     end
     attr_accessor :body,:runtime
     def initialize runtime:,body:

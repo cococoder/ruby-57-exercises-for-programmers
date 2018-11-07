@@ -14,8 +14,8 @@ class QuestionTest < Test::Unit::TestCase
 
     question = SayHello::Question.new runtime: runtime, body: body
     #when
-    question.ask?
-
+    answer = question.ask?
+    assert_not_nil(answer)
   end
 
   def test_ask_and_recieve_correct_answer
