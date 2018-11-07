@@ -19,6 +19,12 @@ module SayHello
   end
 
   class Question
+    class Answer
+      def initialize source
+        @source = source
+      end
+
+    end
     attr_accessor :body,:runtime
     def initialize runtime:,body:
       @runtime = runtime
@@ -26,7 +32,7 @@ module SayHello
     end
     def ask?
       runtime.out body
-      runtime.in
+      Question::Answer.new runtime.in
     end
   end
 end
