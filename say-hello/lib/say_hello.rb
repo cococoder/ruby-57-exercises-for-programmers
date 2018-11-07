@@ -17,4 +17,13 @@ module SayHello
 
     end
   end
+
+  class Question
+    def initialize runtime:
+
+    end
+    def ask?
+      raise NotImplementedError
+    end
+  end
 end
