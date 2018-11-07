@@ -6,10 +6,14 @@ class QuestionTest < Test::Unit::TestCase
   def test_ask
     #Given
     name = "Brian"
+    body = "What is your name?"
     runtime = mock!
     #expect
-    mock(runtime).out("What is your name?")
-    question = SayHello::Question.new runtime: runtime
+
+    mock(runtime).out(body)
+    mock(runtime).in
+
+    question = SayHello::Question.new runtime: runtime, body: body
     #when
     question.ask?
 

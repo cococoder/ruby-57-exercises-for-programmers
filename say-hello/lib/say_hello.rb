@@ -19,11 +19,14 @@ module SayHello
   end
 
   class Question
-    def initialize runtime:
-
+    attr_accessor :body,:runtime
+    def initialize runtime:,body:
+      @runtime = runtime
+      @body = body
     end
     def ask?
-      raise NotImplementedError
+      runtime.out body
+      runtime.in
     end
   end
 end
