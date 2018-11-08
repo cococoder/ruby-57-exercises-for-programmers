@@ -3,7 +3,7 @@ require "test/unit/rr"
 require_relative '../say-hello/lib/say_hello'
 
 class GreetingTest < Test::Unit::TestCase
-  def test_build
+  def test_greet
     #Given
     name = "Brian"
     template = "Hello, *, nice to meet you!"
@@ -11,15 +11,11 @@ class GreetingTest < Test::Unit::TestCase
     #expect
 
     mock(runtime).out("Hello, Brian, nice to meet you!")
-    mock(runtime).in
-
-    builder = SayHello::GreetingBuilder.new runtime: runtime, template: template
-
+    greeting = SayHello::Greeting.new runtime: runtime, template: template
     #when
-    greeting = builder.build
+    greeted  = greeting.greet name: name
 
-    #then
-    assert_equal("Hello, Brian, nice to meet you!",greeting)
+    assert_equal(true,greeted)
   end
 
 end

@@ -2,3 +2,13 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/say_hello"
+class CommandLine
+  def in
+    gets
+  end
+  def out data
+    puts data
+  end
+end
+@cli = SayHello::Cli.new runtime: CommandLine.new
+@cli.run

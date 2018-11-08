@@ -11,13 +11,28 @@
 module SayHello
   class Cli
     def initialize runtime:
-
+      @runtime = runtime
     end
     def run
-
+      question = "What is your name?"
+      template = "Hello, *, nice to meet you!"
+      question = SayHello::Question.new runtime: @runtime, body: question
+      answer = question.ask?
+      greeting = SayHello::Greeting.new runtime: @runtime, template: template
+      greeting.greet name: answer.to_s
     end
   end
 
+  class Greeting
+    def initialize runtime:,template:
+      @runtime = runtime
+      @template = template
+    end
+    def greet(name:)
+      @runtime.out @template.gsub!("*",name)
+      true
+    end
+  end
   class Question
     class Answer
       def initialize source
